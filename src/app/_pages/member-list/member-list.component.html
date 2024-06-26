@@ -1,0 +1,75 @@
+<section class="p-3">
+  <div class="mx-auto max-w-screen-xl px-4">
+    <button
+      type="button"
+      class="text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+      (click)="toggleForm()"
+    >
+      Agregar un integrante
+    </button>
+
+  <form *ngIf="showForm" class="mt-4">
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+      <input type="text" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo electrónico:</label>
+      <input type="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+      <label for="semester" class="block text-gray-700 text-sm font-bold mb-2">Semestre:</label>
+      <input type="number" id="semester" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+      <label for="career" class="block text-gray-700 text-sm font-bold mb-2">Carrera:</label>
+      <input type="string" id="career" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+  <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    Submit 
+  </button>
+</form>
+    <div class="bg-white relative shadow-md overflow-x-auto">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+            <th scope="col" class="px-4 py-3">ID</th>
+            <th scope="col" class="px-4 py-3">Nombre</th>
+            <th scope="col" class="px-4 py-3">Correo electrónico</th>
+            <th scope="col" class="px-4 py-3">Semestre</th>
+            <th scope="col" class="px-4 py-3">Carrera</th>
+            <th scope="col" class="px-4 py-3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b" *ngIf="members.length === 0">
+            <td colspan="6" class="px-4 py-3 text-center text-gray-500">
+              No hay integrantes
+            </td>
+          </tr>
+          <tr class="border-b" *ngFor="let member of members">
+            <th
+              scope="row"
+              class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
+            >
+              {{ member.id }}
+            </th>
+            <td class="px-4 py-3">{{ member.name }}</td>
+            <td class="px-4 py-3">{{ member.email }}</td>
+            <td class="px-4 py-3">{{ member.semester }}</td>
+            <td class="px-4 py-3">{{ member.career }}</td>
+            <td class="px-4 py-3">
+              <button
+                type="button"
+                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+              >
+                Editar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
